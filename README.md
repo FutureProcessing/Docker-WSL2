@@ -80,6 +80,20 @@ Download and execute following file:\
 
 Press `Next`. After the installation is complete, press `Finish`.
 
+**Important!**
+
+To make each newly installed distribution start in wsl2 by default, run the
+following command:
+```
+wsl --set-default-version 2
+```
+
+If you already have any distribution installed and want to upgrade to wsl2,
+run the following command
+```
+wsl --set-version <distro-name> 2
+```
+
 
 ### Step 4. Install Ubuntu
 

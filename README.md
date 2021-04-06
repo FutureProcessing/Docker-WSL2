@@ -7,7 +7,7 @@ PowerShell was used to run the commands
 
 ### Step 1. Enable Virtual Machine Platform
 
-Execute following command to enable Virtual Machine Platform
+Execute the following command to enable Virtual Machine Platform
 ```shell
 Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform
 ```
@@ -36,7 +36,7 @@ CustomProperties :
 
 ### Step 2. Enable Microsoft Windows Subsystem Linux
 
-Execute following command to enable Microsoft Windows Subsystem Linux
+Execute the following command to enable Microsoft Windows Subsystem Linux
 ```
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
 ```

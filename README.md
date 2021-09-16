@@ -1,4 +1,4 @@
-# Docker Desktop on WSL2
+# Docker Engine on WSL2
 
 ## Windows 10 Configuration
 
@@ -108,25 +108,13 @@ wsl --set-version <distro-name> 2
 1. Ubuntu installation is complete
    ![](images/ubuntu-install-end.png)
 
-
-
-## Docker Desktop
-
-1. Download and execute following file:\
-   https://download.docker.com/win/stable/Docker%20Desktop%20Installer.exe
-   ![](images/docker-desktop-1.png)
-1. Go through the installer leaving the default settings. WSL2 will be automatically detected.
-   ![](images/docker-desktop-2.png)
-1. Press `Close and log out` after successfully installation.
-   ![](images/docker-desktop-3.png)
-
 ## Visual Studio Code
 
 Download, install and run Visual Studio Code\
 https://code.visualstudio.com/Download
 
 ### Remote - WSL
- 
+
 1. Install [Remote WSL](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl) extension.\
    (Press `ctrl+p` and execute `ext install ms-vscode-remote.remote-wsl`)
 1. In the bottom left corner, press the green button\

@@ -128,14 +128,13 @@ wsl --set-version <distro-name> 2
 1. Check server version\
    `docker info  --format "{{.ServerVersion}}"`
 
-### Ubuntu 20.10+ nftable issue
+### Ubuntu 20.10+ nftables issue
 
 In ubuntu 20.10* due to incompatibility of Docker Engine with nftables, legacy
 iptables should be used. To switch default iptables execute the following command and choose **iptables-legacy**
 ```
 sudo update-alternatives --config iptables
 ```
-
 
 ## Visual Studio Code
 
@@ -157,6 +156,10 @@ https://code.visualstudio.com/Download
    https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701
 1. Open Windows Terminal and select Ubuntu
    ![](images/windows-terminal-ubuntu.png)
+
+### Recomended plugins
+
+- [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
 
 ## First Container
 

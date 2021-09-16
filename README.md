@@ -108,6 +108,35 @@ wsl --set-version <distro-name> 2
 1. Ubuntu installation is complete
    ![](images/ubuntu-install-end.png)
 
+## Docker Engine
+
+1. Start WSL2 session, execute the command\
+   `wsl`
+1. Download [installation script](https://get.docker.com)\
+   `curl -fsSL https://get.docker.com -o get-docker.sh`
+1. Execute the script \
+   `sh get-docker.sh`\
+   ** **Ignore the Docker Desktop recommendation** **
+1. Add current user do the `docker` group\
+   `sudo gpasswd -a $(whoami) docker`
+1. Stop WSL2 session, execute the command\
+   `exit`
+1. Start WSL2 session\
+   `wsl`
+1. Start Docker service\
+   `sudo service docker start`
+1. Check server version\
+   `docker info  --format "{{.ServerVersion}}"`
+
+### Ubuntu 20.10+ nftable issue
+
+In ubuntu 20.10* due to incompatibility of Docker Engine with nftables, legacy
+iptables should be used. To switch default iptables execute the following command and choose **iptables-legacy**
+```
+sudo update-alternatives --config iptables
+```
+
+
 ## Visual Studio Code
 
 Download, install and run Visual Studio Code\

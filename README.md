@@ -110,23 +110,47 @@ wsl --set-version <distro-name> 2
 
 ## Docker Engine
 
-1. Start WSL2 session, execute the command\
+Choose and execute one of the available installation methods:
+
+### Scripted installation
+
+1. Start WSL session\
    `wsl`
-1. Download [installation script](https://get.docker.com)\
-   `curl -fsSL https://get.docker.com -o get-docker.sh`
-1. Execute the script \
-   `sh get-docker.sh`\
-   ** **Ignore the Docker Desktop recommendation** **
+1. Execute **[setup.sh](./setup.sh)** script\
+   `./setup.sh`
+1. Stop WSL session\
+   `logout`
+1. Start WSL session\
+   `wsl`
+1. Check server version\
+   `docker info  --format "{{.ServerVersion}}"`\
+   Expected output:\
+   `xx.xx.x`
+
+### Manual installation
+
+1. Start WSL session\
+   `wsl`
+1. Download PGP Public Key\
+   `curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --quiet --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg`
+1. Add APT source list\
+   `echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list`
+1. Update APT package information\
+   `sudo apt update --yes`
+1. Install Docker Community Edition\
+   `sudo apt install --yes docker-ce`
 1. Add current user do the `docker` group\
-   `sudo gpasswd -a $(whoami) docker`
-1. Stop WSL2 session, execute the command\
-   `exit`
-1. Start WSL2 session\
+   `sudo usermod -aG docker $(whoami)`
+1. Stop WSL session\
+   `logout`
+1. Start WSL session\
    `wsl`
 1. Start Docker service\
    `sudo service docker start`
 1. Check server version\
-   `docker info  --format "{{.ServerVersion}}"`
+   `docker info  --format "{{.ServerVersion}}"`\
+   Expected output:\
+   `xx.xx.x`
 
 ### Ubuntu 20.10+ nftables issue
 

@@ -94,63 +94,85 @@ run the following command
 wsl --set-version <distro-name> 2
 ```
 
-
 ### Step 4. Install Ubuntu
 
-1. Visit https://www.microsoft.com/pl-pl/p/ubuntu-2004-lts/9n6svws3rx71
-1. Press `Get` and then `Open Microsoft Store`.
-1. Download the distribution by pressing the `Download` button
-1. Run the downloaded application
-   ![](images/ubuntu-install-start.png)
-1. Enter new UNIX username (new user will be created in Ubuntu)
-   ![](images/ubuntu-install-username.png)
-1. Enter password for new username
-1. Ubuntu installation is complete
-   ![](images/ubuntu-install-end.png)
+1. Open PowerShell terminal
+1. Install **Ubuntu 20.04 LTS** distribution
+   ```
+   wsl --install --distribution Ubuntu-20.04
+   ```
+1. Enter new UNIX username and password (new user will be created in Linux)
+1. Enjoy new Linux instance
 
 ## Docker Engine
 
+**Important: After each reboot, run `sudo service docker start` to start the docker service**
+
 Choose and execute one of the available installation methods:
 
-### Scripted installation
+### Scripted installation (preferred)
 
-1. Start WSL session\
-   `wsl`
-1. Execute **[setup.sh](./setup.sh)** script\
-   `./setup.sh`
-1. Stop WSL session\
-   `logout`
-1. Start WSL session\
-   `wsl`
-1. Check server version\
-   `docker info  --format "{{.ServerVersion}}"`\
-   Expected output:\
-   `xx.xx.x`
+1. Open PowerShell terminal
+1. Download **[setup.sh](./setup.sh)** script
+   ```
+   Invoke-WebRequest -uri https://git.future-processing.com/docker-training/wsl2/-/raw/master/setup.sh -OutFile setup.sh
+   ```
+1. Execute the script
+   ```
+   wsl -- ./setup.sh
+   ```
+   Expected output:
+   ```
+   Docker Server version: xx.xx.x
+   ```
+1. Enjoy Docker Engine
 
 ### Manual installation
 
-1. Start WSL session\
-   `wsl`
-1. Download PGP Public Key\
-   `curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --quiet --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg`
-1. Add APT source list\
-   `echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list`
-1. Update APT package information\
-   `sudo apt update --yes`
-1. Install Docker Community Edition\
-   `sudo apt install --yes docker-ce`
-1. Add current user do the `docker` group\
-   `sudo usermod -aG docker $(whoami)`
-1. Stop WSL session\
-   `logout`
-1. Start WSL session\
-   `wsl`
-1. Start Docker service\
-   `sudo service docker start`
-1. Check server version\
-   `docker info  --format "{{.ServerVersion}}"`\
-   Expected output:\
-   `xx.xx.x`
+1. Start WSL session
+   ```
+   wsl
+   ```
+1. Download PGP Public Key
+   ```
+   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --quiet --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+   ```
+1. Add APT source list
+   ```
+   echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
+   ```
+1. Update APT package information
+   ```
+   sudo apt update --yes
+   ```
+1. Install Docker Community Edition
+   ```
+   sudo apt install --yes docker-ce
+   ```
+1. Add current user do the `docker` group
+   ```
+   sudo usermod -aG docker $(whoami)
+   ```
+1. Stop WSL session
+   ```
+   logout
+   ```
+1. Start WSL session
+   ```
+   wsl
+   ```
+1. Start Docker service
+   ```
+   sudo service docker start
+   ```
+1. Check server version
+   ```
+   docker info  --format "Docker Server version: {{.ServerVersion}}"
+   ```
+   Expected output:
+   ```
+   Docker Server version: xx.xx.x
+   ```
 
 ### Ubuntu 20.10+ nftables issue
 

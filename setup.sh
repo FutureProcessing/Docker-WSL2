@@ -1,16 +1,27 @@
 #!/usr/bin/env bash
 
-DOCKER_LIST_PATH="/etc/apt/sources.list.d/docker.list"
+set -e
+
+source ./variables.env
+
+echo "Adding Docker archive keyring"
+if [[ ! -f $DOCKER_KEYRING_PATH ]]; then
+  curl -kfsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --quiet --dearmor -o $DOCKER_KEYRING_PATH
+fi
+
+echo "Adding APT Docker list"
 if [[ ! -f $DOCKER_LIST_PATH ]]; then
-  curl -kfsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --quiet --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-  echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee $DOCKER_LIST_PATH > /dev/null
+  echo "deb [arch=amd64 signed-by=${DOCKER_KEYRING_PATH}] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee $DOCKER_LIST_PATH > /dev/null
   sudo apt update --yes
 fi
 
+echo "Installing Docker CE"
 sudo apt install --yes docker-ce
 
+echo "Adding current user do docker group"
 sudo usermod -aG docker $(whoami)
 
+echo "Starting docker service"
 sudo service docker start
 
-docker info  --format "Docker Server version: {{.ServerVersion}}"
+sudo docker info  --format "Docker Server version is {{.ServerVersion}}"

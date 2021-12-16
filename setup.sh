@@ -2,7 +2,8 @@
 
 set -e
 
-source ./variables.env
+DOCKER_KEYRING_PATH="/etc/apt/trusted.gpg.d/docker-archive-keyring.gpg"
+DOCKER_LIST_PATH="/etc/apt/sources.list.d/docker.list"
 
 echo "Adding Docker archive keyring"
 if [[ ! -f $DOCKER_KEYRING_PATH ]]; then

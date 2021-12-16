@@ -123,7 +123,7 @@ Choose and execute one of the available installation methods:
    ```
    Expected output:
    ```
-   Docker Server version: xx.xx.x
+   Docker Server version is xx.xx.xx
    ```
 1. Enjoy Docker Engine
 
@@ -167,11 +167,11 @@ Choose and execute one of the available installation methods:
    ```
 1. Check server version
    ```
-   docker info  --format "Docker Server version: {{.ServerVersion}}"
+   docker info  --format "Docker Server version is {{.ServerVersion}}"
    ```
    Expected output:
    ```
-   Docker Server version: xx.xx.x
+   Docker Server version: xx.xx.xx
    ```
 
 ### Run Docker when a new WSL instance launches (the right way)

@@ -135,11 +135,11 @@ Choose and execute one of the available installation methods:
    ```
 1. Download PGP Public Key
    ```
-   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --quiet --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --quiet --dearmor -o /etc/apt/trusted.gpg.d/docker-archive-keyring.gpg
    ```
 1. Add APT source list
    ```
-   echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
+   echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
    ```
 1. Update APT package information
    ```

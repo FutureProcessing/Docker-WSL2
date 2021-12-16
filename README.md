@@ -174,6 +174,19 @@ Choose and execute one of the available installation methods:
    Docker Server version: xx.xx.x
    ```
 
+### Run Docker when a new WSL instance launches (the right way)
+
+In WSL instance edit file `/etc/wsl.conf` and add the following content
+
+```ini
+[boot]
+command = service docker start
+```
+
+File should be accessible via `\\wsl$\<distro-name>\etc\wsl.conf`
+
+More information available [here](https://docs.microsoft.com/en-us/windows/wsl/wsl-config).
+
 ### Ubuntu 20.10+ nftables issue
 
 In ubuntu 20.10* due to incompatibility of Docker Engine with nftables, legacy

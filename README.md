@@ -179,16 +179,17 @@ manually.
 ### Run Docker when a WSL instance launches (the right way)
 
 By default operating system running in WSL does not start services
-automatically so Docker service is not running after reboot.
+automatically so Docker service is not running after reboot. One could execute
+`sudo service docker start` command each time or automate that action using
+following instruction.
 
-In WSL instance edit file `/etc/wsl.conf` and add the following content
+In WSL instance edit file `/etc/wsl.conf` and add the following content (file is
+also accessible via `\\wsl$\<distro-name>\etc\wsl.conf`)
 
 ```ini
 [boot]
 command = service docker start
 ```
-
-File should be accessible via `\\wsl$\<distro-name>\etc\wsl.conf`
 
 More information available [here](https://docs.microsoft.com/en-us/windows/wsl/wsl-config).
 

@@ -106,7 +106,8 @@ wsl --set-version <distro-name> 2
 
 ## Docker Engine
 
-**Important: After each reboot, run `sudo service docker start` to start the docker service**
+**Important: To start the docker service automatically follow the
+"Run Docker when a WSL instance launches" section**
 
 Choose and execute one of the available installation methods:
 
@@ -174,7 +175,10 @@ Choose and execute one of the available installation methods:
    Docker Server version: xx.xx.xx
    ```
 
-### Run Docker when a new WSL instance launches (the right way)
+### Run Docker when a WSL instance launches (the right way)
+
+By default operating system running in WSL does not start services
+automatically so Docker service is not running after reboot.
 
 In WSL instance edit file `/etc/wsl.conf` and add the following content
 

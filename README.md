@@ -106,8 +106,8 @@ wsl --set-version <distro-name> 2
 
 ## Docker Engine
 
-**Important: To start the docker service automatically follow the
-"Run Docker when a WSL instance launches" section**
+**Important: To start the Docker service automatically follow the "Run Docker
+when a WSL instance launches" section after successful installation**
 
 Choose and execute one of the available installation methods:
 

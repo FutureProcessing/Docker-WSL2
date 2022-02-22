@@ -246,3 +246,27 @@ https://code.visualstudio.com/Download
    ad77e95c178b1bdd3c752b45223e40b2f9a964a99cd6ee611043805518631d42
    ```
 1.  Visit http://localhost/tutorial
+
+## Docker Compose
+
+1. Create CLI plugins directory:
+   ```
+   mkdir -p ~/.docker/cli-plugins
+   ```
+1. Download docker-compose executable:
+   ```
+   curl -L https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
+   ```
+1. Make docker-compose file executable:
+   ```
+   chmod +x ~/.docker/cli-plugins/docker-compose
+   ```
+1. Check installation correctness by viewing compose's version:
+   ```
+   docker compose version
+   ```
+
+   Expected example output:
+   ```
+   Docker Compose version v2.2.3
+   ```

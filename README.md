@@ -5,102 +5,16 @@
 All commands should be run in shell with __administrator privileges__.
 PowerShell was used to run the commands
 
-### Step 1. Enable Virtual Machine Platform
+## Install WSL2 + Ubuntu
 
-Execute the following command to enable Virtual Machine Platform
-```shell
-Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform
-```
-
-The following question will be displayed during the subsystem installation.
-Select `Yes` to perform the full installation during reboot.
-```
-Do you want to restart the computer to complete this operation now?
-[Y] Yes  [N] No  [?] Help (default is "Y"):
-```
-
-After a reboot, you can ensure that the platform has been properly enabled by running the following command.
-```
-Get-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform
-```
-
-An example of the correct result of a command:
-```
-FeatureName      : VirtualMachinePlatform
-DisplayName      : Virtual Machine Platform
-Description      : Enables platform support for virtual machines
-RestartRequired  : Possible
-State            : Enabled
-CustomProperties :
-```
-
-### Step 2. Enable Microsoft Windows Subsystem Linux
-
-Execute the following command to enable Microsoft Windows Subsystem Linux
-```
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
-```
-The following question will be displayed during the subsystem installation.
-Select `Yes` to perform the full installation during reboot
-```
-Do you want to restart the computer to complete this operation now?
-[Y] Yes  [N] No  [?] Help (default is "Y"):
-```
-
-After a reboot, you can ensure that the subsystem has been properly enabled by running the following command.
-```
-Get-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
-```
-
-An example of the correct result of a command:
-```
-FeatureName      : Microsoft-Windows-Subsystem-Linux
-DisplayName      : Windows Subsystem for Linux
-Description      : Provides services and environments for running native user-mode Linux shells and tools on Windows.
-RestartRequired  : Possible
-State            : Enabled
-CustomProperties :
-                   ServerComponent\Description : Provides services and environments for running native user-mode Linux
-                   shells and tools on Windows.
-                   ServerComponent\DisplayName : Windows Subsystem for Linux
-                   ServerComponent\Id : 1033
-                   ServerComponent\Type : Feature
-                   ServerComponent\UniqueName : Microsoft-Windows-Subsystem-Linux
-                   ServerComponent\Deploys\Update\Name : Microsoft-Windows-Subsystem-Linux
-```
-
-### Step 3. WSL2 Kernel Update
-
-An update to the kernel component of the WSL 2 subsystem is required. For more information visit: https://aka.ms/wsl2kernel, https://docs.microsoft.com/pl-pl/windows/wsl/wsl2-kernel
-
-Download and execute following file:\
- https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
-
-![](images/wsl2-kernel-1.png)
-
-Press `Next`. After the installation is complete, press `Finish`.
-
-**Important!**
-
-To make each newly installed distribution start in wsl2 by default, run the
-following command:
-```
-wsl --set-default-version 2
-```
-
-If you already have any distribution installed and want to upgrade to wsl2,
-run the following command
-```
-wsl --set-version <distro-name> 2
-```
-
-### Step 4. Install Ubuntu
+Microsoft simplified installation of WSL2 starting with Windows 10 version 2004 (see [documentation](https://docs.microsoft.com/en-us/windows/wsl/install) for details).
 
 1. Open PowerShell terminal
 1. Install **Ubuntu 20.04 LTS** distribution
    ```
    wsl --install --distribution Ubuntu-20.04
    ```
+1. Reboot
 1. Enter new UNIX username and password (new user will be created in Linux)
 1. Enjoy new Linux instance
 
@@ -183,6 +97,8 @@ automatically so Docker service is not running after reboot. One could execute
 `sudo service docker start` command each time or automate that action using
 following instruction.
 
+#### Windows 11
+If you have installed Windows 11, you can start docker using the Boot setting ([link](https://docs.microsoft.com/en-us/windows/wsl/wsl-config#boot-settings)).
 In WSL instance edit file `/etc/wsl.conf` and add the following content (file is
 also accessible via `\\wsl$\<distro-name>\etc\wsl.conf`)
 
@@ -192,6 +108,14 @@ command = service docker start
 ```
 
 More information available [here](https://docs.microsoft.com/en-us/windows/wsl/wsl-config).
+
+#### Windows 10
+In previous versions of Windows you can use `.profile` file to automatically start the service if it's not running.
+Add the following line to `~/.profile` file (`\\wsl$\<distro-name>\home\<username>\.profile`) or any shell configuration file you're using (i.e. `.bash_profile`).
+```
+(sudo service docker status || sudo service docker start) > /dev/null
+```
+
 
 ### Ubuntu 20.10+ nftables issue
 

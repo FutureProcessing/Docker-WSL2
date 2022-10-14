@@ -19,7 +19,7 @@ fi
 echo "Installing Docker CE"
 sudo apt install --yes docker-ce
 
-echo "Adding current user do docker group"
+echo "Adding current user to docker group"
 sudo usermod -aG docker $(whoami)
 
 echo "Starting docker service"

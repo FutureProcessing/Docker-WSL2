@@ -31,7 +31,7 @@ manually.
 1. Open PowerShell terminal
 1. Download **[setup.sh](./setup.sh)** script
    ```
-   Invoke-WebRequest -uri https://git.future-processing.com/docker-training/wsl2/-/raw/master/setup.sh -OutFile setup.sh
+   Invoke-WebRequest -uri https://raw.githubusercontent.com/FutureProcessing/Docker-WSL2/master/setup.sh -OutFile setup.sh
    ```
 1. Execute the script
    ```

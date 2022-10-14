@@ -182,24 +182,8 @@ https://code.visualstudio.com/Download
 
 ## Docker Compose
 
-1. Create CLI plugins directory:
-   ```
-   mkdir -p ~/.docker/cli-plugins
-   ```
-1. Download docker-compose executable:
-   ```
-   curl -L https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
-   ```
-1. Make docker-compose file executable:
-   ```
-   chmod +x ~/.docker/cli-plugins/docker-compose
-   ```
-1. Check installation correctness by viewing compose's version:
-   ```
-   docker compose version
-   ```
+Docker Compose is available as part of `docker-compose-plugin` package installed
+as dependency to `docker-ce` package.
 
-   Expected example output:
-   ```
-   Docker Compose version v2.2.3
-   ```
+Docker Compose should be used as `docker compose` command. Command
+`docker-compose` is deprecated.

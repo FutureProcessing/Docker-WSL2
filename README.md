@@ -41,6 +41,14 @@ manually.
    ```
    Docker Server version is xx.xx.xx
    ```
+1. Stop WSL session
+   ```
+   logout
+   ```
+1. Start WSL session
+   ```
+   wsl
+   ```
 1. Enjoy Docker Engine
 
 ### Manual installation
@@ -69,6 +77,7 @@ manually.
    ```
    sudo usermod -aG docker $(whoami)
    ```
+   Note: For the new group to be used by your system, it is necessary to log out
 1. Stop WSL session
    ```
    logout

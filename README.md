@@ -1,5 +1,7 @@
 # Docker Engine on WSL2
 
+The manual is used to prepare an environment for the containerization training cycle at Future Processing.
+
 ## Windows 10 Configuration
 
 All commands should be run in shell with __administrator privileges__.

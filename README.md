@@ -189,3 +189,8 @@ as dependency to `docker-ce` package.
 
 Docker Compose should be used as `docker compose` command. Command
 `docker-compose` is deprecated.
+
+# Know Issues
+
+Conflict with Docker Desktop. Docker Desktop may try to change the configuration
+of the WSL distribution if it is the default.
